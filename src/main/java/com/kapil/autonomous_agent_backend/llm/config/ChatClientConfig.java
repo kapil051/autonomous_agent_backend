@@ -11,13 +11,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ChatClientConfig {
 
-    @Value("${llm.base-url}")
+    @Value("${spring.ai.openai.base-url}")
     private String baseUrl;
 
-    @Value("${llm.api-key}")
+    @Value("${spring.ai.openai.api-key}")
     private String apiKey;
 
-    @Value("${llm.model}")
+    @Value("${spring.ai.openai.model}")
     private String model;
 
     @Bean
