@@ -24,6 +24,7 @@ public class Constants {
 
     public static final int GITHUB_AUTH_URL_GENERATED = 2014;
     public static final int GITHUB_CONNECT_SUCCESS = 2015;
+    public static final int AGENT_CREATED = 2016;
 
     // ==================== FAILURE CODES (4xxx) ====================
 
@@ -33,6 +34,8 @@ public class Constants {
     public static final int ENCRYPTION_FAILED = 4039;
     public static final int DECRYPTION_FAILED = 4040;
     public static final int GITHUB_OAUTH_INVALID_STATE = 4041;
+    public static final int AGENT_NAME_REQUIRED = 4042;
+    public static final int AGENT_ALREADY_EXISTS = 4043;
 
     // ==================== RESPONSE MESSAGE MAP ====================
 
@@ -45,6 +48,7 @@ public class Constants {
             // ---------> Success messages
             Map.entry(GITHUB_AUTH_URL_GENERATED, "GitHub auth URL generated"),
             Map.entry(GITHUB_CONNECT_SUCCESS, "GitHub account connected successfully"),
+            Map.entry(AGENT_CREATED, "Agent created successfully"),
 
             // ---------> Failure messages
             Map.entry(INTERNAL_SERVER_ERROR, "Something went wrong. Please try again later"),
@@ -52,6 +56,8 @@ public class Constants {
             Map.entry(GITHUB_USER_FETCH_FAILED, "Failed to fetch GitHub user"),
             Map.entry(ENCRYPTION_FAILED, "Failed to encrypt value"),
             Map.entry(DECRYPTION_FAILED, "Failed to decrypt value"),
-            Map.entry(GITHUB_OAUTH_INVALID_STATE, "Invalid or tampered OAuth state")
+            Map.entry(GITHUB_OAUTH_INVALID_STATE, "Invalid or tampered OAuth state"),
+            Map.entry(AGENT_NAME_REQUIRED, "Agent name is required"),
+            Map.entry(AGENT_ALREADY_EXISTS, "Agent with this name already exists")
     );
 }
