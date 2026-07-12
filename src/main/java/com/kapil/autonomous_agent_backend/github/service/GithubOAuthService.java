@@ -7,4 +7,6 @@ public interface GithubOAuthService {
     String buildAuthorizeUrl(String agentId);
 
     AgentToolConnection handleCallback(String code, String agentId);
+
+    String resolveAccessToken(String agentId);
 }

@@ -36,6 +36,8 @@ public class Constants {
     public static final int GITHUB_OAUTH_INVALID_STATE = 4041;
     public static final int AGENT_NAME_REQUIRED = 4042;
     public static final int AGENT_ALREADY_EXISTS = 4043;
+    public static final int GITHUB_CONNECTION_NOT_FOUND = 4044;
+    public static final int GITHUB_ISSUE_FETCH_FAILED = 4045;
 
     // ==================== RESPONSE MESSAGE MAP ====================
 
@@ -58,6 +60,8 @@ public class Constants {
             Map.entry(DECRYPTION_FAILED, "Failed to decrypt value"),
             Map.entry(GITHUB_OAUTH_INVALID_STATE, "Invalid or tampered OAuth state"),
             Map.entry(AGENT_NAME_REQUIRED, "Agent name is required"),
-            Map.entry(AGENT_ALREADY_EXISTS, "Agent with this name already exists")
+            Map.entry(AGENT_ALREADY_EXISTS, "Agent with this name already exists"),
+            Map.entry(GITHUB_CONNECTION_NOT_FOUND, "No GitHub connection found for this agent"),
+            Map.entry(GITHUB_ISSUE_FETCH_FAILED, "Failed to fetch GitHub issue")
     );
 }

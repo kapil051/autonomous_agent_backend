@@ -86,6 +86,14 @@ public class GithubOAuthServiceImpl implements GithubOAuthService {
         return agentToolConnectionRepository.save(connection);
     }
 
+    @Override
+    public String resolveAccessToken(String agentId) {
+        AgentToolConnection connection = agentToolConnectionRepository.findByAgentId(agentId)
+                .orElseThrow(() -> new GitHubOAuthException(Constants.GITHUB_CONNECTION_NOT_FOUND, HttpStatus.NOT_FOUND));
+
+        return encryptionService.decrypt(connection.getAccessToken());
+    }
+
     private String exchangeCodeForToken(String code) {
         GithubTokenResponse tokenResponse = restClient.post()
                 .uri(TOKEN_URL)
