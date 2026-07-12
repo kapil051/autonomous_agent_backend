@@ -1,5 +1,7 @@
 package com.kapil.autonomous_agent_backend.github.service.impl;
 
+import com.kapil.autonomous_agent_backend.constant.Constants;
+import com.kapil.autonomous_agent_backend.exception.GitHubOAuthException;
 import com.kapil.autonomous_agent_backend.github.dto.GithubTokenResponse;
 import com.kapil.autonomous_agent_backend.github.dto.GithubUserResponse;
 import com.kapil.autonomous_agent_backend.github.model.AgentToolConnection;
@@ -89,8 +91,7 @@ public class GithubOAuthServiceImpl implements GithubOAuthService {
                 .body(GithubTokenResponse.class);
 
         if (tokenResponse == null || tokenResponse.access_token() == null) {
-            String reason = tokenResponse != null ? tokenResponse.error_description() : "empty response";
-            throw new IllegalStateException("Failed to obtain GitHub access token: " + reason);
+            throw new GitHubOAuthException(Constants.GITHUB_TOKEN_EXCHANGE_FAILED);
         }
 
         return tokenResponse.access_token();
@@ -105,7 +106,7 @@ public class GithubOAuthServiceImpl implements GithubOAuthService {
                 .body(GithubUserResponse.class);
 
         if (userResponse == null || userResponse.login() == null) {
-            throw new IllegalStateException("Failed to fetch GitHub user");
+            throw new GitHubOAuthException(Constants.GITHUB_USER_FETCH_FAILED);
         }
 
         return userResponse.login();

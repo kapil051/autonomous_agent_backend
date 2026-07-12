@@ -1,5 +1,7 @@
 package com.kapil.autonomous_agent_backend.github.service.impl;
 
+import com.kapil.autonomous_agent_backend.constant.Constants;
+import com.kapil.autonomous_agent_backend.exception.EncryptionException;
 import com.kapil.autonomous_agent_backend.github.service.EncryptionService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -40,7 +42,7 @@ public class EncryptionServiceImpl implements EncryptionService {
 
             return Base64.getEncoder().encodeToString(buffer.array());
         } catch (Exception e) {
-            throw new IllegalStateException("Failed to encrypt value", e);
+            throw new EncryptionException(Constants.ENCRYPTION_FAILED, e);
         }
     }
 
@@ -60,7 +62,7 @@ public class EncryptionServiceImpl implements EncryptionService {
 
             return new String(cipher.doFinal(cipherText));
         } catch (Exception e) {
-            throw new IllegalStateException("Failed to decrypt value", e);
+            throw new EncryptionException(Constants.DECRYPTION_FAILED, e);
         }
     }
 }
