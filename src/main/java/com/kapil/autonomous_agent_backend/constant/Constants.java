@@ -38,6 +38,7 @@ public class Constants {
     public static final int AGENT_ALREADY_EXISTS = 4043;
     public static final int GITHUB_CONNECTION_NOT_FOUND = 4044;
     public static final int GITHUB_ISSUE_FETCH_FAILED = 4045;
+    public static final int GITHUB_COMMENT_POST_FAILED = 4046;
 
     // ==================== RESPONSE MESSAGE MAP ====================
 
@@ -62,6 +63,7 @@ public class Constants {
             Map.entry(AGENT_NAME_REQUIRED, "Agent name is required"),
             Map.entry(AGENT_ALREADY_EXISTS, "Agent with this name already exists"),
             Map.entry(GITHUB_CONNECTION_NOT_FOUND, "No GitHub connection found for this agent"),
-            Map.entry(GITHUB_ISSUE_FETCH_FAILED, "Failed to fetch GitHub issue")
+            Map.entry(GITHUB_ISSUE_FETCH_FAILED, "Failed to fetch GitHub issue"),
+            Map.entry(GITHUB_COMMENT_POST_FAILED, "Failed to post GitHub issue comment")
     );
 }
