@@ -32,6 +32,7 @@ public class Constants {
     public static final int GITHUB_USER_FETCH_FAILED = 4038;
     public static final int ENCRYPTION_FAILED = 4039;
     public static final int DECRYPTION_FAILED = 4040;
+    public static final int GITHUB_OAUTH_INVALID_STATE = 4041;
 
     // ==================== RESPONSE MESSAGE MAP ====================
 
@@ -50,6 +51,7 @@ public class Constants {
             Map.entry(GITHUB_TOKEN_EXCHANGE_FAILED, "Failed to obtain GitHub access token"),
             Map.entry(GITHUB_USER_FETCH_FAILED, "Failed to fetch GitHub user"),
             Map.entry(ENCRYPTION_FAILED, "Failed to encrypt value"),
-            Map.entry(DECRYPTION_FAILED, "Failed to decrypt value")
+            Map.entry(DECRYPTION_FAILED, "Failed to decrypt value"),
+            Map.entry(GITHUB_OAUTH_INVALID_STATE, "Invalid or tampered OAuth state")
     );
 }

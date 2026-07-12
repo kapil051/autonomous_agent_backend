@@ -1,5 +1,6 @@
 package com.kapil.autonomous_agent_backend.github.service.impl;
 
+import com.kapil.autonomous_agent_backend.agent.repository.AgentRepository;
 import com.kapil.autonomous_agent_backend.constant.Constants;
 import com.kapil.autonomous_agent_backend.exception.GitHubOAuthException;
 import com.kapil.autonomous_agent_backend.github.dto.GithubTokenResponse;
@@ -9,6 +10,7 @@ import com.kapil.autonomous_agent_backend.github.repository.AgentToolConnectionR
 import com.kapil.autonomous_agent_backend.github.service.EncryptionService;
 import com.kapil.autonomous_agent_backend.github.service.GithubOAuthService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -41,12 +43,15 @@ public class GithubOAuthServiceImpl implements GithubOAuthService {
     @Value("${github.scope}")
     private String scope;
 
+    private final AgentRepository agentRepository;
     private final AgentToolConnectionRepository agentToolConnectionRepository;
     private final EncryptionService encryptionService;
     private final RestClient restClient;
 
-    public GithubOAuthServiceImpl(AgentToolConnectionRepository agentToolConnectionRepository,
+    public GithubOAuthServiceImpl(AgentRepository agentRepository,
+                                   AgentToolConnectionRepository agentToolConnectionRepository,
                                    EncryptionService encryptionService) {
+        this.agentRepository = agentRepository;
         this.agentToolConnectionRepository = agentToolConnectionRepository;
         this.encryptionService = encryptionService;
         this.restClient = RestClient.create();
@@ -65,6 +70,10 @@ public class GithubOAuthServiceImpl implements GithubOAuthService {
 
     @Override
     public AgentToolConnection handleCallback(String code, String agentId) {
+        if (!agentRepository.existsById(agentId)) {
+            throw new GitHubOAuthException(Constants.GITHUB_OAUTH_INVALID_STATE, HttpStatus.BAD_REQUEST);
+        }
+
         String accessToken = exchangeCodeForToken(code);
         String githubLogin = fetchGithubUsername(accessToken);
 
