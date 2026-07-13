@@ -13,14 +13,14 @@ import org.springframework.web.client.RestClient;
 import java.util.Map;
 
 @Component
-public class GitHubIssueCommentTools {
+public class GitHubAddIssueCommentTools {
 
     private static final String GITHUB_API_BASE_URL = "https://api.github.com";
 
     private final GithubOAuthService githubOAuthService;
     private final RestClient restClient;
 
-    public GitHubIssueCommentTools(GithubOAuthService githubOAuthService) {
+    public GitHubAddIssueCommentTools(GithubOAuthService githubOAuthService) {
         this.githubOAuthService = githubOAuthService;
         this.restClient = RestClient.create();
     }
