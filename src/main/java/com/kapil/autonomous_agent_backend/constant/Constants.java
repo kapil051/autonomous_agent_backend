@@ -44,6 +44,7 @@ public class Constants {
     public static final int GITHUB_FILE_FETCH_FAILED = 4049;
     public static final int GITHUB_BRANCH_CHECK_FAILED = 4050;
     public static final int GITHUB_BRANCH_CREATE_FAILED = 4051;
+    public static final int GITHUB_FILE_WRITE_FAILED = 4052;
 
     // ==================== RESPONSE MESSAGE MAP ====================
 
@@ -74,6 +75,7 @@ public class Constants {
             Map.entry(GITHUB_REPO_DETAILS_FETCH_FAILED, "Failed to fetch GitHub repository details"),
             Map.entry(GITHUB_FILE_FETCH_FAILED, "Failed to fetch GitHub file content"),
             Map.entry(GITHUB_BRANCH_CHECK_FAILED, "Failed to check GitHub branch existence"),
-            Map.entry(GITHUB_BRANCH_CREATE_FAILED, "Failed to create GitHub branch")
+            Map.entry(GITHUB_BRANCH_CREATE_FAILED, "Failed to create GitHub branch"),
+            Map.entry(GITHUB_FILE_WRITE_FAILED, "Failed to write files to GitHub branch")
     );
 }
